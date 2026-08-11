@@ -9,6 +9,10 @@
 
 <style>
 
+/* =========================
+   BASE
+========================= */
+
 * {
   box-sizing: border-box;
 }
@@ -21,8 +25,6 @@ body {
 
 body {
 
-  margin: 0;
-
   padding: 25px 12px 80px;
 
   font-family: Arial, sans-serif;
@@ -30,7 +32,6 @@ body {
   color: #ffffff;
 
   background:
-
     repeating-linear-gradient(
       -45deg,
       #0755a5 0px,
@@ -43,7 +44,9 @@ body {
 }
 
 
-/* CONTENITORE */
+/* =========================
+   CONTENITORE
+========================= */
 
 .page {
 
@@ -55,7 +58,9 @@ body {
 }
 
 
-/* TITOLO */
+/* =========================
+   TITOLO
+========================= */
 
 h1 {
 
@@ -72,7 +77,9 @@ h1 {
 }
 
 
-/* VIDEO */
+/* =========================
+   VIDEO
+========================= */
 
 .video-box {
 
@@ -100,7 +107,9 @@ h1 {
 }
 
 
-/* COMMENTO */
+/* =========================
+   COMMENTO + FOTO
+========================= */
 
 .commento {
 
@@ -131,10 +140,64 @@ h1 {
   font-weight: bold;
 }
 
+.commento img {
+
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  margin-top: 15px;
+
+  border-radius: 10px;
+}
 
 
+/* 🔴🔴🔴 INIZIO STILE BANNER 🔴🔴🔴 */
 
-./* 🔴🔴🔴 DIMENSIONE BANNER 🔴🔴🔴 */
+.banner-overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 15px;
+
+  background: rgba(0,0,0,.65);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
+}
+
+.banner-overlay.show {
+
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* =========================
+   BANNER
+========================= */
 
 .banner {
 
@@ -144,7 +207,7 @@ h1 {
 
   max-width: 430px;
 
-  padding: 22px 15px 18px;
+  padding: 24px 15px 18px;
 
   text-align: center;
 
@@ -157,10 +220,106 @@ h1 {
   box-shadow:
     0 12px 35px rgba(0,0,0,.7);
 }
+
+
+/* TITOLO BANNER */
+
+.banner h2 {
+
+  margin: 0 0 10px;
+
+  color: #54ff45;
+
+  font-size: 25px;
+
+  line-height: 1.2;
+}
+
+
+/* TESTO BANNER */
+
+.banner p {
+
+  margin: 0 0 18px;
+
+  color: #ffffff;
+
+  font-size: 17px;
+
+  line-height: 1.4;
+}
+
+
+/* 🔴 LINK DENTRO IL BANNER */
+
+.banner a {
+
+  display: block;
+
+  width: 100%;
+
+  padding: 16px 10px;
+
+  background: #54ff45;
+
+  color: #06305e;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  box-shadow:
+    0 4px 0 #2fae27;
+}
+
+.banner a:active {
+
+  transform: translateY(3px);
+
+  box-shadow: none;
+}
+
+
+/* PULSANTE CHIUSURA */
+
+.close {
+
+  position: absolute;
+
+  top: 2px;
+
+  right: 6px;
+
+  width: 35px;
+
+  height: 35px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 28px;
+
+  line-height: 35px;
+
+  cursor: pointer;
+}
+
+
 /* 🔴🔴🔴 FINE STILE BANNER 🔴🔴🔴 */
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 480px) {
 
@@ -169,18 +328,36 @@ h1 {
     padding: 15px 8px 60px;
   }
 
+  .banner {
+
+    width: 92%;
+
+    max-width: 390px;
+
+    padding: 23px 13px 17px;
+  }
+
   .banner h2 {
 
-    font-size: 25px;
+    font-size: 23px;
+  }
+
+  .banner p {
+
+    font-size: 16px;
   }
 
   .banner a {
 
-    font-size: 20px;
+    font-size: 19px;
 
-    padding: 18px 8px;
+    padding: 16px 8px;
   }
+
 }
+
+
+/* 🔴🔴🔴 FINE CSS 🔴🔴🔴 */
 
 </style>
 
@@ -193,48 +370,60 @@ h1 {
 <div class="page">
 
 
-<h1>
-  Adesso la gente parcheggia sulla spiaggia
-</h1>
+  <!-- =========================
+       TITOLO
+  ========================== -->
+
+  <h1>
+    Adesso la gente parcheggia sulla spiaggia
+  </h1>
 
 
-<!-- VIDEO -->
+  <!-- =========================
+       VIDEO
+  ========================== -->
 
-<div class="video-box">
+  <div class="video-box">
 
-  <video
-    controls
-    playsinline
-    preload="metadata"
-  >
-
-    <source
-      src="video.mp4"
-      type="video/mp4"
+    <video
+      controls
+      playsinline
+      preload="metadata"
     >
 
-    Il tuo browser non supporta la riproduzione del video.
+      <source
+        src="video.mp4"
+        type="video/mp4"
+      >
 
-  </video>
+      Il tuo browser non supporta la riproduzione del video.
+
+    </video>
+
+  </div>
+
+
+  <!-- =========================
+       COMMENTO + FOTO
+  ========================== -->
+
+  <div class="commento">
+
+    <p>
+      Effetto strisce blù 👮‍♀️
+    </p>
+
+    <img
+      src="foto.jpg"
+      alt="Effetto strisce blu"
+    >
+
+  </div>
+
 
 </div>
 
 
-<!-- COMMENTO -->
-
-<div class="commento">
-
-  <p>
-    Effetto strisce blù 👮‍♀️
-  </p>
-
-  <img
-    src="foto.jpg"
-    alt="Effetto strisce blu"
-    style="width:100%; max-width:100%; margin-top:15px; border-radius:10px; display:block;"
-  >
-
-</div>
 <!-- 🔴🔴🔴 INIZIO CODICE BANNER 🔴🔴🔴 -->
 
 <div
@@ -244,47 +433,79 @@ h1 {
 
   <div class="banner">
 
-  <button
-    class="close"
-    onclick="chiudiBanner()"
-    aria-label="Chiudi"
-  >
-    ×
-  </button>
 
-  <h2>
-    🇮🇹 Visita le Chat Italiane 🇮🇹
-  </h2>
+    <!-- CHIUDI -->
 
-  <p>
-    Entra nella chat e fai due chiacchiere.
-  </p>
+    <button
+      class="close"
+      onclick="chiudiBanner()"
+      aria-label="Chiudi banner"
+    >
+      ×
+    </button>
 
-  <!-- 🟢 LINK DENTRO IL BANNER 🟢 -->
-  <a
-    href="https://unox1chat.netlify.app/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    APRI LA CHAT
-  </a>
+
+    <!-- TITOLO -->
+
+    <h2>
+      🇮🇹 Visita le Chat Italiane 🇮🇹
+    </h2>
+
+
+    <!-- TESTO -->
+
+    <p>
+      Entra nella chat e fai due chiacchiere.
+    </p>
+
+
+    <!-- 🟢 LINK DIRETTAMENTE NEL BANNER -->
+
+    <a
+      href="https://unox1chat.netlify.app/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      APRI LA CHAT
+    </a>
+
+
+  </div>
 
 </div>
+
 <!-- 🔴🔴🔴 FINE CODICE BANNER 🔴🔴🔴 -->
 
 
-<!-- 🔴🔴🔴 INIZIO BANNER ULTIMI 5 SECONDI VIDEO 🔴🔴🔴 -->
+<!-- 🔴🔴🔴 INIZIO CONTROLLO ULTIMI 5 SECONDI 🔴🔴🔴 -->
 
 <script>
 
-const video = document.querySelector(".video-box video");
-const banner = document.getElementById("banner");
+const video =
+  document.querySelector(".video-box video");
+
+const banner =
+  document.getElementById("banner");
 
 let bannerChiuso = false;
 
+
+/* CONTROLLA IL TEMPO DEL VIDEO */
+
 video.addEventListener("timeupdate", function() {
 
-  const tempoRimanente = video.duration - video.currentTime;
+  if (!isFinite(video.duration)) {
+    return;
+  }
+
+  const tempoRimanente =
+    video.duration - video.currentTime;
+
+
+  /*
+    MOSTRA IL BANNER
+    QUANDO MANCANO 5 SECONDI
+  */
 
   if (
     tempoRimanente <= 5 &&
@@ -299,6 +520,8 @@ video.addEventListener("timeupdate", function() {
 });
 
 
+/* CHIUDI BANNER */
+
 function chiudiBanner() {
 
   banner.classList.remove("show");
@@ -309,8 +532,7 @@ function chiudiBanner() {
 
 </script>
 
-<!-- 🔴🔴🔴 FINE BANNER ULTIMI 5 SECONDI VIDEO 🔴🔴🔴 -->
-
+<!-- 🔴🔴🔴 FINE CONTROLLO ULTIMI 5 SECONDI 🔴🔴🔴 -->
 
 
 </body>
